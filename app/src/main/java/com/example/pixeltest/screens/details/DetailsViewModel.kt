@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pixeltest.data.entity.ProductData
 import com.example.pixeltest.data.repository.Repository
-import com.example.pixeltest.screens.home.HomeScreenState
 import com.example.pixeltest.utlis.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -61,11 +60,7 @@ class DetailsViewModel @Inject constructor(
     fun checkFavoriteStatus(productId: String) {
         viewModelScope.launch {
             val favorites = repository.getFavorites().first()
-            favorites.forEach { println("Checking favorite: ${it.id} against $productId") } // Tüm karşılaştırmaları yazdır
-
             val isFavorite = favorites.any { it.id.trim() == productId.trim() }
-            println("Favorite check result for $productId: $isFavorite")
-
             _isFavorite.value = isFavorite
         }
     }
@@ -73,14 +68,7 @@ class DetailsViewModel @Inject constructor(
 
     fun addToFavorites(product: ProductData) {
         viewModelScope.launch {
-            println("Adding to favorites: ${product.id}")
             repository.addToFavorites(product)
-
-            // Favorilere eklenen tüm ürünleri kontrol et
-            val favorites = repository.getFavorites().first()
-            println("Favorites after adding: $favorites") // Favoriler doğru eklenmiş mi?
-
-            // Favori durumunu kontrol et
             checkFavoriteStatus(product.id)
         }
     }

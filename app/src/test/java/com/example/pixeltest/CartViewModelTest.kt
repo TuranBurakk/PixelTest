@@ -34,11 +34,8 @@ class CartViewModelTest {
         // Test Dispatcher
         testDispatcher = TestCoroutineDispatcher()
         Dispatchers.setMain(testDispatcher)
-
-        // Initialize the ViewModel with mocked repository
         viewModel = CartViewModel(repository)
 
-        // Mock getCart() to return a sample list of cart items
         val cartItems = listOf(
             ProductData(
                 id = "1",
