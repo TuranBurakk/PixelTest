@@ -40,7 +40,7 @@ fun ProductPrice(product: ProductData, viewModel: DetailsViewModel,plusCart: () 
 
 
             Text(
-                text = "\$${product.price}",
+                text = "${product.price}",
                 style = MaterialTheme.typography.bodyMedium,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,

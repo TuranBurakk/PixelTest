@@ -14,7 +14,8 @@ class LocalDataSource @Inject constructor(
     }
 
     suspend fun addToFavorites(product: ProductData) {
-        favoriteProductDao.updateFavoriteStatus(product.id,isFavorite = true)
+        val updatedProduct = product.copy(isFavorite = true)
+        favoriteProductDao.insertProduct(updatedProduct)
     }
 
     suspend fun removeFromFavorites(product: ProductData) {
