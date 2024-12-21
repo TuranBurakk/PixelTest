@@ -72,7 +72,6 @@ class MainActivity : ComponentActivity() {
                             )
                         ) { backStackEntry ->
                             val productId = backStackEntry.arguments?.getString("productId")
-                            val productName = backStackEntry.arguments?.getString("productName")
                             productId?.let {
                                 DetailsScreen(navController = navController, productId = it, plusCart = { mainViewModel.plusCart() })
                             }

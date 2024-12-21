@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
@@ -28,7 +26,7 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun AppBottomBar(navController: NavController,count:Int) {
+fun AppBottomBar(navController: NavController, count: Int) {
 
 
     BottomAppBar(
@@ -65,6 +63,7 @@ fun AppBottomBar(navController: NavController,count:Int) {
         }
     }
 }
+
 @Composable
 fun BottomBarIconWithBadge(
     icon: androidx.compose.ui.graphics.vector.ImageVector,
@@ -78,7 +77,9 @@ fun BottomBarIconWithBadge(
                 imageVector = icon,
                 contentDescription = label,
                 tint = Color.Black,
-                modifier = Modifier.align(Alignment.Center).size(26.dp)
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(26.dp)
             )
 
             if (badgeCount > 0) {
